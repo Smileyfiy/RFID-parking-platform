@@ -1,0 +1,46 @@
+[project]
+name = "gatelock"
+version = "0.1.0"
+description = "Gatelock: RFID vehicle access, parking and security backend"
+authors = [
+    { name = "Smileyfiy", email = "johnotieno177@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "aiomqtt>=2.5.1",
+    "alembic>=1.20.0",
+    "asyncpg>=0.32.0",
+    "bcrypt>=5.0.0",
+    "cryptography>=50.0.2",
+    "fastapi>=0.143.2",
+    "pydantic-settings>=2.16.0",
+    "pyjwt>=2.15.1",
+    "python-multipart>=0.0.32",
+    "sqlalchemy[asyncio]>=2.1.4",
+    "uvicorn[standard]>=0.54.0",
+]
+
+[project.scripts]
+gatelock-sim = "gatelock.simulator:main"
+gatelock-seed = "gatelock.seed:main"
+
+[build-system]
+requires = ["uv_build>=0.12.21,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "ruff>=0.17.1",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+asyncio_default_test_loop_scope = "session"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
