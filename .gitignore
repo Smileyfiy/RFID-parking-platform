@@ -6,3 +6,7 @@ node_modules/
 dist/
 .pytest_cache/
 .ruff_cache/
+
+# Gate Assist (v2) has its own git repository
+v2/
+*.tsbuildinfo
